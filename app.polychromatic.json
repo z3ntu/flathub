@@ -6,6 +6,8 @@
     "command": "polychromatic-controller",
     "base": "com.riverbankcomputing.PyQt.BaseApp",
     "base-version": "6.7",
+    "rename-icon": "polychromatic",
+    "rename-desktop-file": "polychromatic.desktop",
     "cleanup-commands": [
         "/app/cleanup-BaseApp.sh"
     ],
