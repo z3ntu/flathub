@@ -1,0 +1,13 @@
+diff --git a/pylib/Makefile b/pylib/Makefile
+index b9586575..96814494 100644
+--- a/pylib/Makefile
++++ b/pylib/Makefile
+@@ -6,7 +6,7 @@ purge_pycache:
+ 	@find -name '__pycache__' | xargs rm -rf
+ 
+ install: purge_pycache
+-	python3 setup.py install --prefix=/usr --root=$(DESTDIR)
++	python3 setup.py install --prefix=/app --root=$(DESTDIR)
+ 
+ ubuntu_install: purge_pycache
+ 	python3 setup.py install --prefix=/usr --root=$(DESTDIR) --no-compile --install-layout=deb
