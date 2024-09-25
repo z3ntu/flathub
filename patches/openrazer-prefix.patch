@@ -1,13 +1,35 @@
+From d52042ab8e7be7bc637e798474d85ec8e9c07095 Mon Sep 17 00:00:00 2001
+From: Luca Weiss <luca@lucaweiss.eu>
+Date: Wed, 25 Sep 2024 00:35:15 +0200
+Subject: [PATCH] pylib: Use PREFIX for installing Python modules
+
+While this was already done for the daemon in 2017 in 7ff65b59 ("Respect
+$PREFIX when installing the daemon"), it's now time to do it for pylib
+as well.
+---
+ pylib/Makefile | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
 diff --git a/pylib/Makefile b/pylib/Makefile
-index b9586575..96814494 100644
+index b9586575..0ba9fe00 100644
 --- a/pylib/Makefile
 +++ b/pylib/Makefile
-@@ -6,7 +6,7 @@ purge_pycache:
+@@ -1,12 +1,13 @@
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ 
+ DESTDIR?=/
++PREFIX?=/usr
+ 
+ purge_pycache:
  	@find -name '__pycache__' | xargs rm -rf
  
  install: purge_pycache
 -	python3 setup.py install --prefix=/usr --root=$(DESTDIR)
-+	python3 setup.py install --prefix=/app --root=$(DESTDIR)
++	python3 setup.py install --prefix=$(PREFIX) --root=$(DESTDIR)
  
  ubuntu_install: purge_pycache
- 	python3 setup.py install --prefix=/usr --root=$(DESTDIR) --no-compile --install-layout=deb
+-	python3 setup.py install --prefix=/usr --root=$(DESTDIR) --no-compile --install-layout=deb
++	python3 setup.py install --prefix=$(PREFIX) --root=$(DESTDIR) --no-compile --install-layout=deb
+-- 
+2.46.2
+
