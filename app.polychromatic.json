@@ -18,6 +18,7 @@
         "--share=ipc",
         "--share=network",
         "--talk-name=org.razer",
+        "--talk-name=org.kde.StatusNotifierWatcher",
         "--device=dri"
     ],
     "modules": [
@@ -170,6 +171,7 @@
                 }
             ]
         },
+        "shared-modules/libayatana-appindicator/libayatana-appindicator-gtk3.json",
         {
             "name": "polychromatic",
             "buildsystem": "meson",
